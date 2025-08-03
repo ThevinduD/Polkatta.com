@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "299171727523",
+    "project_id": "polkatta-com",
+    "storage_bucket": "polkatta-com.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:299171727523:android:fa3b6c93ee3e0f6f435716",
+        "android_client_info": {
+          "package_name": "com.example.polkattacom"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWYFj8RsKTAhxPVy11fyxb9PRmm1ErUFY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Polkatta.com</string>
+    <string name="splash_title">YOUR\nSTYLE WILL\nTELL ABOUT\nYOU</string>
+    <string name="let_s_get_started">Let\'s Get Started</string>
+    <string name="polkatta_com">Polkatta.com</string>
+    <string name="already_have_an_account_sign_in">Already have an account? <font color="#bc5432"> Sign In </font> </string>
+</resources>
