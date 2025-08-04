@@ -9,6 +9,7 @@
     android:textAlignment="center"
     android:paddingHorizontal="16dp"
     android:paddingVertical="8dp"
+    android:layout_marginStart="8dp"
     android:id="@+id/titleTxt"
     android:layout_height="wrap_content">
 

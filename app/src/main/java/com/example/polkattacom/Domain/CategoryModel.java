@@ -3,7 +3,7 @@ package com.example.polkattacom.Domain;
 public class CategoryModel {
     private String title;
     private int id;
-    private String picUrl;
+//    private String picUrl;
 
     public CategoryModel() {
     }
@@ -24,11 +24,11 @@ public class CategoryModel {
         this.id = id;
     }
 
-    public String getPicUrl() {
-        return picUrl;
-    }
-
-    public void setPicUrl(String picUrl) {
-        this.picUrl = picUrl;
-    }
+//    public String getPicUrl() {
+//        return picUrl;
+//    }
+//
+//    public void setPicUrl(String picUrl) {
+//        this.picUrl = picUrl;
+//    }
 }
