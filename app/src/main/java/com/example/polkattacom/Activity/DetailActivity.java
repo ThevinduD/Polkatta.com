@@ -9,11 +9,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.bumptech.glide.Glide;
+import com.example.polkattacom.Adapter.PicListAdapter;
 import com.example.polkattacom.Domain.ItemsModel;
 import com.example.polkattacom.Helper.ManagmentCart;
 import com.example.polkattacom.R;
 import com.example.polkattacom.databinding.ActivityDetailBinding;
+
+import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -32,6 +37,17 @@ public class DetailActivity extends AppCompatActivity {
         managmentCart = new ManagmentCart(this);
         
         getBunble();
+        initPicList();
+    }
+
+    private void initPicList() {
+        ArrayList<String> picList = new ArrayList<>(object.getPicUrl());
+        Glide.with(this)
+                .load(picList.get(0))
+                .into(binding.pic);
+
+        binding.picList.setAdapter(new PicListAdapter(picList, binding.pic));
+        binding.picList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
     }
 
     private void getBunble() {
