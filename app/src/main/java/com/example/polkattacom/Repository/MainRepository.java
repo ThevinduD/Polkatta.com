@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.polkattacom.Domain.BannerModel;
 import com.example.polkattacom.Domain.CategoryModel;
+import com.example.polkattacom.Domain.ItemsModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -58,6 +59,32 @@ public class MainRepository {
                 ArrayList<BannerModel> list = new ArrayList<>();
                 for (DataSnapshot childSnapShot:snapshot.getChildren()){
                     BannerModel item = childSnapShot.getValue(BannerModel.class);
+                    if (item!=null) {
+                        list.add(item);
+                    }
+                }
+                listData.setValue(list);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return listData;
+    }
+
+    public LiveData<ArrayList<ItemsModel>> loadPopular() {
+        MutableLiveData<ArrayList<ItemsModel>> listData = new MutableLiveData<>();
+        DatabaseReference ref = firebaseDatabase.getReference("Items");
+
+        ref.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<ItemsModel> list = new ArrayList<>();
+                for (DataSnapshot childSnapShot:snapshot.getChildren()){
+                    ItemsModel item = childSnapShot.getValue(ItemsModel.class);
                     if (item!=null) {
                         list.add(item);
                     }

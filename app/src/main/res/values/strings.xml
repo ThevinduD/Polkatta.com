@@ -4,4 +4,10 @@
     <string name="let_s_get_started">Let\'s Get Started</string>
     <string name="polkatta_com">Polkatta.com</string>
     <string name="already_have_an_account_sign_in">Already have an account? <font color="#bc5432"> Sign In </font> </string>
+    <string name="popular">Popular</string>
+    <string name="home">Home</string>
+    <string name="favorite">Favorite</string>
+    <string name="cart">Cart</string>
+    <string name="profile">Profile</string>
+    <string name="add_to_cart">Add To Cart</string>
 </resources>

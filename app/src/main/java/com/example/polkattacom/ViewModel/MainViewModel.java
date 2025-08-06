@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.polkattacom.Domain.BannerModel;
 import com.example.polkattacom.Domain.CategoryModel;
+import com.example.polkattacom.Domain.ItemsModel;
 import com.example.polkattacom.Repository.MainRepository;
 
 import java.util.ArrayList;
@@ -17,4 +18,6 @@ public class MainViewModel extends ViewModel {
     }
 
     public LiveData<ArrayList<BannerModel>> loadBanner() { return repository.loadBanner(); }
+
+    public LiveData<ArrayList<ItemsModel>> loadPopular() { return repository.loadPopular(); }
 }
