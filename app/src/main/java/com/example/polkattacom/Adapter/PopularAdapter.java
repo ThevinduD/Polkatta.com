@@ -1,6 +1,7 @@
 package com.example.polkattacom.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterInside;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.polkattacom.Activity.DetailActivity;
 import com.example.polkattacom.Domain.ItemsModel;
 import com.example.polkattacom.databinding.ViewholderPopularBinding;
 
@@ -47,11 +49,10 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
                 .apply(new RequestOptions().transform(new CenterInside()))
                 .into(holder.binding.pic);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
+        holder.itemView.setOnClickListener(view -> {
+            Intent intent = new Intent(context, DetailActivity.class);
+            intent.putExtra("object", items.get(position));
+            context.startActivity(intent);
         });
     }
 
