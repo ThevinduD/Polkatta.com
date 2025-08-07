@@ -1,31 +1,65 @@
 package com.example.polkattacom.Adapter;
 
-import android.view.View;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.polkattacom.R;
+import com.example.polkattacom.databinding.ViewholderSizeBinding;
+
+import java.util.ArrayList;
+
 public class SizeAdapter extends RecyclerView.Adapter<SizeAdapter.Viewholder> {
+
+    ArrayList<String> items;
+    Context context;
+    int selectedPosition = -1;
+    int lastSelectedPosition = -1;
+
+    public SizeAdapter(ArrayList<String> items) {
+        this.items = items;
+    }
+
     @NonNull
     @Override
     public SizeAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        context = parent.getContext();
+        ViewholderSizeBinding binding = ViewholderSizeBinding.inflate(LayoutInflater.from(context), parent, false);
+        return new Viewholder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull SizeAdapter.Viewholder holder, int position) {
+        holder.binding.sizeTxt.setText(items.get(position));
+        holder.binding.getRoot().setOnClickListener(view -> {
+            lastSelectedPosition = selectedPosition;
+            selectedPosition = holder.getAdapterPosition();
+            notifyItemChanged(lastSelectedPosition);
+            notifyItemChanged(selectedPosition);
+        });
 
+        if (selectedPosition == holder.getAdapterPosition()) {
+            holder.binding.sizeLayout.setBackgroundResource(R.drawable.size_selected);
+            holder.binding.sizeTxt.setTextColor(context.getResources().getColor(R.color.purple));
+        }else {
+            holder.binding.sizeLayout.setBackgroundResource(R.drawable.size_unselected);
+            holder.binding.sizeTxt.setTextColor(context.getResources().getColor(R.color.black));
+        }
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return items.size();
     }
 
     public class Viewholder extends RecyclerView.ViewHolder {
-        public Viewholder(@NonNull View itemView) {
-            super(itemView);
+        ViewholderSizeBinding binding;
+        public Viewholder(ViewholderSizeBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }

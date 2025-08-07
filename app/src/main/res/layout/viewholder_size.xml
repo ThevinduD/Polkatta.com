@@ -4,7 +4,8 @@
     android:id="@+id/sizeLayout"
     android:layout_width="35dp"
     android:layout_height="35dp"
-    android:background="@drawable/bg_size">
+    android:layout_marginHorizontal="2dp"
+    android:background="@drawable/size_selected">
 
     <TextView
         android:id="@+id/sizeTxt"

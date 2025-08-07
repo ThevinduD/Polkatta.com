@@ -12,7 +12,9 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
+import com.example.polkattacom.Adapter.ColorAdapter;
 import com.example.polkattacom.Adapter.PicListAdapter;
+import com.example.polkattacom.Adapter.SizeAdapter;
 import com.example.polkattacom.Domain.ItemsModel;
 import com.example.polkattacom.Helper.ManagmentCart;
 import com.example.polkattacom.R;
@@ -38,6 +40,18 @@ public class DetailActivity extends AppCompatActivity {
         
         getBunble();
         initPicList();
+        initSize();
+        initColor();
+    }
+
+    private void initColor() {
+        binding.recyclerColor.setAdapter(new ColorAdapter(object.getColor()));
+        binding.recyclerColor.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+    }
+
+    private void initSize() {
+        binding.recyclerSize.setAdapter(new SizeAdapter(object.getSize()));
+        binding.recyclerSize.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
     }
 
     private void initPicList() {
@@ -54,7 +68,7 @@ public class DetailActivity extends AppCompatActivity {
         object = (ItemsModel) getIntent().getSerializableExtra("object");
         binding.titleTxt.setText(object.getTitle());
         binding.priceTxt.setText("$"+object.getPrice());
-        binding.oldPriceTxt.setText("$"+object.getPrice());
+        binding.oldPriceTxt.setText("$"+object.getOldPrice());
         binding.oldPriceTxt.setPaintFlags(binding.oldPriceTxt.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
         binding.descriptionTxt.setText(object.getDescription());
         binding.addToCartBtn.setOnClickListener(view -> {
