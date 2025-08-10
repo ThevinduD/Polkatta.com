@@ -1,11 +1,18 @@
 package com.example.polkattacom.Activity;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
@@ -33,8 +40,14 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private MainViewModel viewModel;
 
+    ImageButton callBtn;
+    ImageButton mapButton;
+
+    static int PERMISSON_CODE = 100;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -52,6 +65,32 @@ public class MainActivity extends AppCompatActivity {
         }
 
         viewModel = new MainViewModel();
+
+        callBtn = findViewById(R.id.callBtn);
+
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE}, PERMISSON_CODE);
+        }
+
+        callBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String phoneNo = "0715779072";
+                Intent i = new Intent(Intent.ACTION_CALL);
+                i.setData(Uri.parse("tel:"+phoneNo));
+                startActivity(i);
+            }
+        });
+
+        mapButton = findViewById(R.id.btn_open_map);
+        mapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Open StoreMapActivity on button click
+                Intent intent = new Intent(MainActivity.this, StoreMapActivity.class);
+                startActivity(intent);
+            }
+        });
         
         initCategory();
         initBanner();
@@ -64,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomNavigation.setOnItemSelectedListener((ChipNavigationBar.OnItemSelectedListener) i -> {
             if (i==R.id.home) {
 
+            } else if (i==R.id.cart) {
+                startActivity(new Intent(MainActivity.this, CartActivity.class));
             }
         });
     }

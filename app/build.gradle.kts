@@ -49,4 +49,5 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation ("com.google.code.gson:gson:2.13.1")
     implementation ("com.github.ismaeldivita:chip-navigation-bar:1.4.0")
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
 }
